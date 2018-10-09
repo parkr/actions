@@ -5,5 +5,5 @@ workflow "Build on push" {
 
 action "pages" {
   uses = "docker://jekyll/minimal:3.8"
-  args = "jekyll build"
+  args = "bash -c \"jekyll build"
 }
