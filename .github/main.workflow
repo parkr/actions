@@ -4,5 +4,5 @@ workflow "Build on push" {
 }
 
 action "pages" {
-  uses = "docker://hub.docker.com/jekyll/minimal"
+  uses = "docker://jekyll/minimal"
 }
