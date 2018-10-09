@@ -5,4 +5,5 @@ workflow "Build on push" {
 
 action "pages" {
   uses = "fried-oreos/pages@master"
+  secrets = ["GITHUB_TOKEN"]
 }
