@@ -4,5 +4,6 @@ workflow "Build on push" {
 }
 
 action "pages" {
-  uses = "docker://jekyll/minimal:3.8"
+  uses = "docker://jekyll/jekyll:3.8"
+  args = "build"
 }
