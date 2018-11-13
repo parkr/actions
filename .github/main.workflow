@@ -1,7 +1,7 @@
 workflow "Build on push" {
   on = "push"
   resolves = [
-    "pages"
+    "pages",
   ]
 }
 
@@ -11,10 +11,10 @@ action "pages" {
   env = {
     PATH = "/usr/jekyll/bin:/usr/local/bin:/usr/bin:/bin:/sbin"
   }
-  needs = ["docker://alpine"]
+  needs = ["setup _site output dir"]
 }
 
-action "docker://alpine" {
+action "setup _site output dir" {
   uses = "docker://alpine"
   runs = ["sh", "-c", "mkdir _site && chown 1000:1000 _site"]
- }
+}
