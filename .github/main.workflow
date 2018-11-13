@@ -5,5 +5,5 @@ workflow "Build on push" {
 
 action "pages" {
   uses = "docker://jekyll/jekyll:3.8"
-  runs = ["jekyll", "build"]
+  runs = ["/usr/jekyll/bin/jekyll", "build"]
 }
