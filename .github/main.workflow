@@ -1,8 +1,6 @@
 workflow "Build on push" {
   on = "push"
-  resolves = [
-    "pages",
-  ]
+  resolves = ["show me my page"]
 }
 
 action "pages" {
@@ -17,4 +15,10 @@ action "pages" {
 action "setup _site output dir" {
   uses = "docker://alpine"
   runs = ["sh", "-c", "mkdir _site && chown 1000:1000 _site"]
+}
+
+action "show me my page" {
+  uses = "docker://alpine"
+  needs = ["pages"]
+  runs = "cat _site/index.html"
 }
