@@ -22,3 +22,21 @@ action "show me my page" {
   needs = ["pages"]
   runs = "cat _site/index.html"
 }
+
+workflow "Echo without newline and see what happens" {
+  on = "push"
+  resolves = ["docker://alpine:3.8-1"]
+}
+
+action "docker://alpine:3.8" {
+  uses = "docker://alpine:3.8"
+  runs = "echo"
+  args = "-n hello world"
+}
+
+action "docker://alpine:3.8-1" {
+  uses = "docker://alpine:3.8"
+  needs = ["docker://alpine:3.8"]
+  runs = "cat"
+  args = "/etc/passwd"
+}
