@@ -1,0 +1,16 @@
+on: push
+name: Build on push
+jobs:
+  buildAndTestActions:
+    name: Build & Test Custom Actions
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build & Test docker-make
+      uses: ./docker-make
+      with:
+        args: test-test-image
+    - name: Build & Test docker-auth
+      uses: ./docker-auth
+      with:
+        args: logout
