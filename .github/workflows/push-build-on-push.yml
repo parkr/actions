@@ -8,11 +8,19 @@ jobs:
       packages: write
     steps:
     - uses: actions/checkout@master
+    - name: Build & Test docker-auth
+      uses: ./docker-auth
+      with:
+        args: login
+      env:
+        DOCKER_REGISTRY_URL: ghcr.io
+        DOCKER_USERNAME: parkr
+        DOCKER_PASSWORD: ${secrets.GITHUB_TOKEN}
     - name: Build & Test docker-make
       uses: ./docker-make
       with:
         args: test-test-image
-    - name: Build & Test docker-auth
+    - name: Log out of ghcr.io
       uses: ./docker-auth
       with:
         args: logout
