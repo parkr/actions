@@ -4,8 +4,6 @@ jobs:
   buildAndTestActions:
     name: Build & Test Custom Actions
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
     steps:
     - uses: actions/checkout@master
     - name: Build & Test docker-make
