@@ -1,0 +1,20 @@
+# action.yml
+name: docker-make
+description: 'Run a make command with docker & cosign installed'
+branding:
+  icon: 'package'
+  color: 'blue'
+inputs:
+  args:
+    description: "Make targets to run (use -e X=Y to set environment variables)"
+    required: true
+  cosign-password:
+    description: 'Cosign key password'
+    required: false
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args: ${{inputs.args}}
+  env:
+    COSIGN_PASSWORD: ${{inputs.cosign-password}}
