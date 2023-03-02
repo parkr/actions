@@ -1,0 +1,26 @@
+# action.yml
+name: octodns-cloudflare
+description: 'Run octodns for Cloudflare'
+branding:
+  icon: 'package'
+  color: 'blue'
+inputs:
+  args:
+    description: "Command to run"
+    required: true
+  cloudflare-email:
+    description: 'Cloudflare account email address'
+    required: false
+    default: ''
+  cloudflare-token:
+    description: 'Cloudflare account token'
+    required: false
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    CLOUDFLARE_EMAIL: '${{inputs.cloudflare-email}}'
+    CLOUDFLARE_TOKEN: '${{inputs.cloudflare-token}}'
+  with:
+    args: ${{inputs.args}}
