@@ -9,3 +9,15 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/docker-auth"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/docker-make"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/octodns-cloudflare"
+    schedule:
+      interval: "weekly" 
