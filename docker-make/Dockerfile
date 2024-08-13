@@ -7,6 +7,9 @@ RUN curl --location https://github.com/sigstore/cosign/releases/download/v1.2.1/
   && chmod +x /usr/local/bin/cosign \
   && cosign version
 
+COPY --from=docker/buildx-bin:0.16.1 /buildx /usr/libexec/docker/cli-plugins/docker-buildx
+RUN docker buildx version
+
 COPY docker_tag_exists.sh /docker_tag_exists.sh
 COPY entrypoint.sh /entrypoint.sh
 
