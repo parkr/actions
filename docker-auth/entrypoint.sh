@@ -2,6 +2,11 @@
 #/ Usage: entrypoint.sh [login|logout]
 #/ Default usage is to login.
 #/ Logs in or out of a given Docker registry.
+set -e
+set -u
+set -o pipefail
+
+docker version
 
 subcommand="$1"
 if [ -z "$subcommand" ]; then
